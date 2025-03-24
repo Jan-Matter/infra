@@ -7,12 +7,6 @@ locals {
 
   # Your Hetzner token can be found in your Project > Security > API Token (Read & Write is required).
   hcloud_token = "xxxxxxxxxxx"
-  ip_whitelist = concat(
-    jsondecode(data.http.terraform_ip_ranges.response_body).notifications,
-    jsondecode(data.http.terraform_ip_ranges.response_body).api,
-    jsondecode(data.http.terraform_ip_ranges.response_body).sentinel,
-    jsondecode(data.http.terraform_ip_ranges.response_body).vcs,
-    ["178.238.174.21/32"])
 }
 
 
@@ -635,7 +629,7 @@ module "kube-hetzner" {
   # Allow SSH access from the specified networks. Default: ["0.0.0.0/0", "::/0"]
   # Allowed values: null (disable SSH rule entirely) or a list of allowed networks with CIDR notation.
   # Ideally you would set your IP there. And if it changes after cluster deploy, you can always update this variable and apply again.
-  firewall_ssh_source = local.ip_whitelist
+  #firewall_ssh_source = local.ip_whitelist
 
   # By default, SELinux is enabled in enforcing mode on all nodes. For container-specific SELinux issues,
   # consider using the pre-installed 'udica' tool to create custom, targeted SELinux policies instead of 
