@@ -8,4 +8,6 @@ resource "helm_release" "argocd" {
 
   create_namespace = true
 
+  values = var.values_path != "" ? [file(var.values_path)] : []
+
 }

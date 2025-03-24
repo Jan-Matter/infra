@@ -5,6 +5,7 @@ locals {
 module "argocd" {
   
     source = "./modules/argocd"
+    values_path = file("./helm_values/argocd.yaml")
     
     argocd_version = local.argocd_version
     k8s_host = var.k8s_host
