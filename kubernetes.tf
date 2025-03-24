@@ -7,7 +7,10 @@ locals {
 
   # Your Hetzner token can be found in your Project > Security > API Token (Read & Write is required).
   hcloud_token = "xxxxxxxxxxx"
-  ip_whitelist = concat(jsondecode(data.http.terraform_ip_ranges.response_body).notifications, ["178.238.174.21/32"])
+  ip_whitelist = concat(
+    jsondecode(data.http.terraform_ip_ranges.response_body).notifications,
+    jsondecode(data.http.terraform_ip_ranges.response_body).api,
+    ["178.238.174.21/32"])
 }
 
 
