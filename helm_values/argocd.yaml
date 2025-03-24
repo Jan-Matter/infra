@@ -1,10 +1,8 @@
 server:
   # Disable SSL to allow to configure TLS connection on the ingress
   enableSSL: false
-  # Configure the HTTP service
   service:
     port: 80
-  # Configure the ArgoCD Server ingress
   ingress:
     enabled: true
     annotations:

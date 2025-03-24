@@ -5,12 +5,6 @@ variable "cert_email" {
     default     = "jan.matter@dataplumbers.ch"
 }
 
-variable "cert_issuers" {
-    description = "Certificate issuer"
-    type        = list(string)
-    default = [ "letsencrypt-test", "letsencrypt-prod" ]
-}
-
 variable "k8s_host" {
     description = "Kubernetes"
     type        = string 
