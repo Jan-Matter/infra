@@ -1,4 +1,5 @@
 resource "kubernetes_manifest" "letsencrypt" {
+  provider = kubernetes.default
   for_each = toset(var.cert_issuers)
 
   manifest = {
