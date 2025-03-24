@@ -1,4 +1,4 @@
-resource "kubernetes_manifest" "letsencrypt" {
+resource "kubernetes_manifest" "letsencrypt-prod" {
 
   manifest = {
     "apiVersion" = "cert-manager.io/v1"
@@ -27,7 +27,7 @@ resource "kubernetes_manifest" "letsencrypt" {
   }
 }
 
-resource "kubernetes_manifest" "letsencrypt" {
+resource "kubernetes_manifest" "letsencrypt-test" {
 
   manifest = {
     "apiVersion" = "cert-manager.io/v1"
