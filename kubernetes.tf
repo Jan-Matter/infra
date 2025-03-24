@@ -10,6 +10,8 @@ locals {
   ip_whitelist = concat(
     jsondecode(data.http.terraform_ip_ranges.response_body).notifications,
     jsondecode(data.http.terraform_ip_ranges.response_body).api,
+    jsondecode(data.http.terraform_ip_ranges.response_body).sentinel,
+    jsondecode(data.http.terraform_ip_ranges.response_body).vcs,
     ["178.238.174.21/32"])
 }
 
