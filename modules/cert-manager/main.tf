@@ -1,5 +1,4 @@
 resource "kubernetes_manifest" "letsencrypt-prod" {
-  depends_on = [module.kube-hetzner]
   manifest = {
     "apiVersion" = "cert-manager.io/v1"
     "kind" = "ClusterIssuer"
@@ -28,7 +27,6 @@ resource "kubernetes_manifest" "letsencrypt-prod" {
 }
 
 resource "kubernetes_manifest" "letsencrypt-test" {
-  depends_on = [module.kube-hetzner]
   manifest = {
     "apiVersion" = "cert-manager.io/v1"
     "kind" = "ClusterIssuer"
