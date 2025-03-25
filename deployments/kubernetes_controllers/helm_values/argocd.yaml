@@ -21,23 +21,7 @@ server:
         - hosts:
             - "argocd.dataplumbers.ch"
           secretName: argocd-server-tls
-      path: /
-
-configs:
-  params:
-    rbac:
-    
-      policy.default: 'role:readonly'
-
-      # -- File containing user-defined policies and role definitions.
-      # @default -- `''` (See [values.yaml])
-      policy.csv: |
-        g, jan.matter@dataplumbers.ch, role:admin
-
-      scopes: "[groups]"
-
-      policy.matchMode: "glob"
-  
+      path: / 
 configs:
   params:
     rbac:
@@ -66,6 +50,7 @@ configs:
               - openid
               - profile
               - email
+              - groups
           insecureSkipVerify: false
 dex:
   enabled: true
