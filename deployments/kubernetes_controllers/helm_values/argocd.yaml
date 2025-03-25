@@ -24,10 +24,11 @@ server:
       path: /
   
 configs:
-  rbac:
-    policy.csv: |
-      g, jan.matter@dataplumbers.ch, role:admin
-    policy.default: role:readonly
+  params:
+    rbac:
+      policy.csv: |
+        g, jan.matter@dataplumbers.ch, role:admin
+      policy.default: role:readonly
   cm:
     dex.config: |
       connectors:
