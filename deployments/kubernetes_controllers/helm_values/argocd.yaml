@@ -29,30 +29,15 @@ configs:
       g, jan.matter@dataplumbers.ch, role:admin
     policy.default: role:readonly
 
-dex:
-  config:
-    connectors:
-      - type: oidc
-        id: infomaniak
-        name: Infomaniak
-        config:
-          issuer: https://login.infomaniak.com/
-          clientIDEnv: INFOMANIAK_ARGOCD_CLIENT_ID
-          clientSecretEnv: INFOMANIAK_ARGOCD_SECRET
-          redirectURI: https://argocd.dataplumbers.ch/api/dex/callback/
-          hostedDomains:
-            - dataplumbers.ch
-
-env:
-  - name: INFOMANIAK_ARGOCD_CLIENT_ID
-    valueFrom:
-      secretKeyRef:
-        name: infomaniak-argocd-oauth-credentials
-        key: clientID
-  - name: INFOMANIAK_ARGOCD_SECRET
-    valueFrom:
-      secretKeyRef:
-        name: infomaniak-argocd-oauth-credentials
-        key: secret
+dex.config:
+  connectors:
+    - type: oidc
+      id: infomaniak
+      name: Infomaniak
+      config:
+        clientID: $infomaniak-argocd-oauth-credentials:clientID
+        clientSecret: $infomaniak-argocd-oauth-credentials:secret
+        orgs:
+        - name: dataplumbers.ch
           
 
