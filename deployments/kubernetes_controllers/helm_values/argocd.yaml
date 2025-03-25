@@ -50,6 +50,7 @@ configs:
             - openid
             - profile
             - email
+            - groups
 dex:
   enabled: true
   env:
