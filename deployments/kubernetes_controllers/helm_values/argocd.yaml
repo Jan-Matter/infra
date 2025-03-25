@@ -1,8 +1,12 @@
+global:
+  domain: argocd.dataplumbers.ch
 server:
   # Disable SSL to allow to configure TLS connection on the ingress
-  enableSSL: false
+  insecure: false
   service:
-    port: 80
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+      nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
 configs:
   rbac:
     policy.csv: |
@@ -10,12 +14,7 @@ configs:
     policy.default: role:readonly
 
 dex:
-  enabled: true
   config:
-    storage:
-      type: kubernetes
-      config:
-        inCluster: true
     connectors:
       - type: oidc
         id: infomaniak
@@ -27,6 +26,7 @@ dex:
           redirectURI: https://argocd.dataplumbers.ch/api/dex/callback/
           hostedDomains:
             - dataplumbers.ch
+
 env:
   - name: INFOMANIAK_ARGOCD_CLIENT_ID
     valueFrom:
