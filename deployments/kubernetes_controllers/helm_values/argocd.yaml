@@ -33,7 +33,7 @@ configs:
         p, role:org-admin, exec, create, */*, allow
         g, jan.matter@dataplumbers.ch, role:org-admin
       policy.default: role:readonly
-      scopes: "[email]"
+      scopes: "[openid]"
       policy.matchMode: "glob"
   cm:
     dex.config: |
@@ -47,7 +47,8 @@ configs:
             clientSecret: "$INFOMANIAK_CLIENT_SECRET"
             redirectURI: https://argocd.dataplumbers.ch/api/dex/callback
             scopes:
-              - email
+              - openid
+            userNameKey: sub
 dex:
   enabled: true
   env:
