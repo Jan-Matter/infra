@@ -7,20 +7,20 @@ server:
     annotations:
       cert-manager.io/cluster-issuer: letsencrypt-prod
       nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
-      
-ingress:
-    enabled: true
-    controller: generic
-    annotations:
-      cert-manager.io/cluster-issuer: letsencrypt-prod
-      nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
-    ingressClassName: "nginx"
-    hostname: "argocd.dataplumbers.ch"
-    tls: 
-      - hosts:
-          - "argocd.dataplumbers.ch"
-        secretName: argocd-tls
-    path: /
+  ingress:
+      enabled: true
+      controller: generic
+      annotations:
+        nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
+        cert-manager.io/cluster-issuer: letsencrypt-prod
+        nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+      ingressClassName: "nginx"
+      hostname: "argocd.dataplumbers.ch"
+      tls: 
+        - hosts:
+            - "argocd.dataplumbers.ch"
+          secretName: argocd-tls
+      path: /
   
 configs:
   rbac:
