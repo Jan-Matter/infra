@@ -50,7 +50,7 @@ configs:
             - openid
             - profile
             - email
-            userNameKey: first_name
+            userNameKey: email
 dex:
   enabled: true
   env:
