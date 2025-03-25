@@ -4,6 +4,7 @@ server:
   service:
     port: 80
   ingress:
+    name: argocd-ingress
     enabled: true
     annotations:
       kubernetes.io/ingress.class: "nginx"
