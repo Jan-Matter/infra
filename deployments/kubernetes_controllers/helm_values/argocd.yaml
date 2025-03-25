@@ -44,7 +44,7 @@ configs:
           config:
             issuer: https://login.infomaniak.com
             clientID: $INFOMANIAK_CLIENT_ID
-            clientSecret: $INFOMANIAK_CLIENT_SECRET
+            clientSecret: $infomaniak-argocd-oauth-credentials.clientSecret
             redirectURI: https://argocd.example.com/api/dex/callback
             scopes:
             - openid
@@ -58,8 +58,3 @@ dex:
         secretKeyRef:
           name: infomaniak-argocd-oauth-credentials
           key: clientID
-    - name: INFOMANIAK_CLIENT_SECRET
-      valueFrom:
-        secretKeyRef:
-          name: infomaniak-argocd-oauth-credentials
-          key: clientSecret
