@@ -2,7 +2,7 @@ global:
   domain: argocd.dataplumbers.ch
 server:
   # Disable SSL to allow to configure TLS connection on the ingress
-  insecure: true
+  insecure: false
   service:
     annotations:
       cert-manager.io/cluster-issuer: letsencrypt-prod
@@ -13,19 +13,15 @@ server:
       annotations:
         cert-manager.io/cluster-issuer: letsencrypt-prod
         nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+        nginx.ingress.kubernetes.io/ssl-redirect: "true"
+        nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
       ingressClassName: "nginx"
       hostname: "argocd.dataplumbers.ch"
       tls: 
         - hosts:
             - "argocd.dataplumbers.ch"
-          secretName: argocd-tls
+          secretName: argocd-server-tls
       path: /
-      pathType: Prefix
-      backend:
-        service:
-          name: argocd-server
-          port:
-            number: 80 
   
 configs:
   rbac:
