@@ -1,7 +1,6 @@
 resource "helm_release" "argocd" {
   name       = "argocd"
   namespace  = "argocd"
-  depends_on = [kubernetes_namespace.argocd]
 
   repository = "https://argoproj.github.io/argo-helm"
   chart      = "argo-cd"
@@ -13,15 +12,8 @@ resource "helm_release" "argocd" {
 
 }
 
-resource "kubernetes_namespace" "argocd" {
-  metadata {
-    name = "argocd"
-  }
-}
-
 # create secret infomaniak-argocd-oauth-credentials
 resource "kubernetes_secret" "infomaniak-argocd-oauth-credentials" {
-  depends_on = [kubernetes_namespace.argocd]
   metadata {
     name      = "infomaniak-argocd-oauth-credentials"
     namespace = "argocd"
