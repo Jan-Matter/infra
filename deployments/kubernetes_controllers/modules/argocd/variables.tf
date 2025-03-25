@@ -10,6 +10,18 @@ variable "values_path" {
   type        = string
 }
 
+variable "infomaniak_argocd_oauth_client_id" {
+  description = "Infomaniak ArgoCD OAuth client ID"
+  type        = string
+  sensitive = true
+}
+
+variable "infomaniak_argocd_oauth_client_secret" {
+  description = "Infomaniak ArgoCD OAuth client ID"
+  type        = string
+  sensitive = true
+}
+
 variable "k8s_host" {
     description = "Kubernetes"
     type        = string 
