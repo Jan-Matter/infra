@@ -28,16 +28,16 @@ configs:
     policy.csv: |
       g, jan.matter@dataplumbers.ch, role:admin
     policy.default: role:readonly
-
-dex.config:
-  connectors:
-    - type: oidc
-      id: infomaniak
-      name: Infomaniak
-      config:
-        clientID: $infomaniak-argocd-oauth-credentials:clientID
-        clientSecret: $infomaniak-argocd-oauth-credentials:secret
-        orgs:
-        - name: dataplumbers.ch
+  cm:
+    dex.config:
+      connectors:
+        - type: oidc
+          id: infomaniak
+          name: Infomaniak
+          config:
+            clientID: $infomaniak-argocd-oauth-credentials:clientID
+            clientSecret: $infomaniak-argocd-oauth-credentials:secret
+            orgs:
+            - name: dataplumbers.ch
           
 
