@@ -48,7 +48,6 @@ configs:
             redirectURI: https://argocd.dataplumbers.ch/api/dex/callback
             scopes:
               - openid
-            userNameKey: sub
 dex:
   enabled: true
   env:
