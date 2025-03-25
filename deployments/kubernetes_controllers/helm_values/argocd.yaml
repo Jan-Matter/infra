@@ -1,0 +1,57 @@
+server:
+  # Disable SSL to allow to configure TLS connection on the ingress
+  enableSSL: false
+  service:
+    port: 80
+  ingress:
+    enabled: true
+    annotations:
+      kubernetes.io/ingress.class: "nginx"
+      cert-manager.io/cluster-issuer: "letsencrypt-prod"
+      nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    tls:                      
+      - hosts:
+          - argocd.dataplumbers.ch
+        secretName: argocd-tls-secret
+    hosts:                      
+      - host: argocd.dataplumbers.ch
+        paths:
+          - path: /
+            pathType: Prefix
+configs:
+  rbac:
+    policy.csv: |
+      g, jan.matter@dataplumbers.ch, role:admin
+    policy.default: role:readonly
+
+dex:
+  enabled: true
+  config:
+    storage:
+      type: kubernetes
+      config:
+        inCluster: true
+    connectors:
+      - type: oidc
+        id: infomaniak
+        name: Infomaniak
+        config:
+          issuer: https://login.infomaniak.com/
+          clientIDEnv: INFOMANIAK_ARGOCD_CLIENT_ID
+          clientSecretEnv: INFOMANIAK_ARGOCD_SECRET
+          redirectURI: https://argocd.dataplumbers.ch/api/dex/callback/
+          hostedDomains:
+            - dataplumbers.ch
+env:
+  - name: INFOMANIAK_ARGOCD_CLIENT_ID
+    valueFrom:
+      secretKeyRef:
+        name: infomaniak-argocd-oauth-credentials
+        key: clientID
+  - name: INFOMANIAK_ARGOCD_SECRET
+    valueFrom:
+      secretKeyRef:
+        name: infomaniak-argocd-oauth-credentials
+        key: secret
+          
+
