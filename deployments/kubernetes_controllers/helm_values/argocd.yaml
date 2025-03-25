@@ -36,6 +36,7 @@ configs:
       scopes: "[openid]"
       policy.matchMode: "glob"
   cm:
+    admin.enabled: false
     dex.config: |
       connectors:
         - type: oidc
