@@ -55,5 +55,5 @@ dex:
   enabled: true
   envFrom:
     - secretRef:
-      name: infomaniak-argocd-oauth-credentials
+        name: infomaniak-argocd-oauth-credentials
 
