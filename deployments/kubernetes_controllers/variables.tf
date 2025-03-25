@@ -16,6 +16,18 @@ variable "ssh_private_key_hetzner" {
     sensitive  = true
 }
 
+variable "infomaniak_argocd_oauth_client_id" {
+  description = "Infomaniak ArgoCD OAuth client ID"
+  type        = string
+  sensitive = true
+}
+
+variable "infomaniak_argocd_oauth_client_secret" {
+  description = "Infomaniak ArgoCD OAuth client ID"
+  type        = string
+  sensitive = true
+}
+
 variable "k8s_host" {
     description = "Kubernetes Host"
     type        = string 

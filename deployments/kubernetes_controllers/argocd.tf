@@ -6,6 +6,8 @@ module "argocd" {
   
     source = "./modules/argocd"
     values_path = "./helm_values/argocd.yaml"
+    infomaniak_argocd_oauth_client_id = var.infomaniak_argocd_oauth_client_id
+    infomaniak_argocd_oauth_client_secret = var.infomaniak_argocd_oauth_client_secret
     
     argocd_version = local.argocd_version
     k8s_host = local.k8s_host
