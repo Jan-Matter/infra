@@ -33,7 +33,7 @@ configs:
         p, role:org-admin, exec, create, */*, allow
         g, jan.matter@dataplumbers.ch, role:org-admin
       policy.default: role:readonly
-      scopes: "[openid, profile, email, groups]"
+      scopes: "[openid, profile, email]"
       policy.matchMode: "glob"
   cm:
     dex.config: |
@@ -50,7 +50,6 @@ configs:
             - openid
             - profile
             - email
-            - groups
 dex:
   enabled: true
   env:
