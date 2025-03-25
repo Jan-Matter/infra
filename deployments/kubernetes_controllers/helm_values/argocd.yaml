@@ -29,15 +29,20 @@ configs:
       g, jan.matter@dataplumbers.ch, role:admin
     policy.default: role:readonly
   cm:
-    dex.config:
+    dex.config: |
       connectors:
         - type: oidc
           id: infomaniak
           name: Infomaniak
           config:
+            issuer: https://login.infomaniak.com
             clientID: $infomaniak-argocd-oauth-credentials:clientID
             clientSecret: $infomaniak-argocd-oauth-credentials:secret
-            orgs:
-            - name: dataplumbers.ch
+            redirectURI: https://argocd.dataplumbers.ch/api/dex/callback
+            scopes:
+              - openid
+              - profile
+              - email
+          insecureSkipVerify: false
           
 
