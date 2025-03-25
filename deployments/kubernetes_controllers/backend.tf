@@ -3,7 +3,7 @@ terraform {
     organization = "dataplumbers"
 
     workspaces {
-      name = "infra-private"
+      name = "private-kubernetes-controllers"
     }
   }
 }
