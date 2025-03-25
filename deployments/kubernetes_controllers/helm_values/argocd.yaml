@@ -36,8 +36,8 @@ configs:
           name: Infomaniak
           config:
             issuer: https://login.infomaniak.com
-            clientID: #INFOMANIAK_CLIENT_ID
-            clientSecret: #INFOMANIAK_CLIENT_SECRET
+            clientID: $INFOMANIAK_CLIENT_ID
+            clientSecret: $INFOMANIAK_CLIENT_SECRET
             redirectURI: https://argocd.dataplumbers.ch/api/dex/callback
             scopes:
               - openid
