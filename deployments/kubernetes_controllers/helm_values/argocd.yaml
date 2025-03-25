@@ -47,7 +47,7 @@ configs:
             clientSecret: $INFOMANIAK_CLIENT_SECRET
             redirectURI: https://argocd.dataplumbers.ch/auth/callback
             scopes: "[openid, profile, email, groups]"
-          insecureSkipVerify: false
+          insecureSkipVerify: true
 dex:
   enabled: true
   env:
