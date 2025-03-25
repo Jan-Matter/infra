@@ -1,3 +1,4 @@
+
 locals {
     k8s_host = yamldecode(module.kube-hetzner.kubeconfig)["clusters"][0]["cluster"]["server"]
     k8s_client_certificate = base64decode(yamldecode(module.kube-hetzner.kubeconfig)["users"][0]["user"]["client-certificate-data"])
