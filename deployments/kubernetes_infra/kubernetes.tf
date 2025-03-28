@@ -158,12 +158,8 @@ module "kube-hetzner" {
       name        = "storage-node",
       server_type = "cx32",
       location    = "nbg1",
-      # Fully optional, just a demo.
       labels      = [
         "node.kubernetes.io/server-usage=storage"
-      ],
-      taints      = [
-        "node.kubernetes.io/server-usage=storage:NoSchedule"
       ],
       count       = 3
 
@@ -232,7 +228,7 @@ module "kube-hetzner" {
     {
       name        = "autoscaled-small"
       server_type = "cx32"
-      location    = "fsn1"
+      location    = "nbg1"
       min_nodes   = 0
       max_nodes   = 10
       labels      = {
