@@ -60,7 +60,7 @@ configs:
     - url: git@github.com:Jan-Matter/airflow.git
       type: git
       sshPrivateKeySecret:
-        name: argocd-repo-ssh-key
+        name: argocd-github-private-ssh-key
         key: sshPrivateKey
 dex:
   enabled: true
