@@ -161,6 +161,7 @@ module "kube-hetzner" {
       labels      = [
         "node.kubernetes.io/server-usage=storage"
       ],
+      taints      = [],
       count       = 3
 
       # In the case of using Longhorn, you can use Hetzner volumes instead of using the node's own storage by specifying a value from 10 to 10240 (in GB)
