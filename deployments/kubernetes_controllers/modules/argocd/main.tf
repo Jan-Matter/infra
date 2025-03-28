@@ -26,15 +26,20 @@ resource "kubernetes_secret" "infomaniak-argocd-oauth-credentials" {
   depends_on = [ helm_release.argocd ]
 }
 
-# create secret infomaniak-argocd-oauth-credentials
-resource "kubernetes_secret" "argocd-github-private-ssh-key" {
-  metadata {
-    name      = "argocd-github-private-ssh-key"
-    namespace = "argocd"
-  }
 
+
+# create secret infomaniak-argocd-oauth-credentials
+resource "kubernetes_secret" "argocd-airflow-github-private-ssh-key" {
+  metadata {
+    name      = "argocd-airflow-github-private-ssh-key"
+    namespace = "argocd"
+    labels = {
+      "argocd.argoproj.io/secret-type" = "repository"
+    }
+  }
   data = {
+    "type"          = "git"
+    "url"           = "git@github.com:argoproj/my-private-repository.git"
     "sshPrivateKey" = var.argocd_github_private_ssh_key
   }
-  depends_on = [ helm_release.argocd ]
 }
