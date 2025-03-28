@@ -29,6 +29,7 @@ configs:
         p, role:org-admin, applications, *, */*, allow
         p, role:org-admin, clusters, get, *, allow
         p, role:org-admin, repositories, *, *, allow
+        p, role:org-admin, certificates, get, *, allow
         p, role:org-admin, logs, get, *, allow
         p, role:org-admin, exec, create, */*, allow
         g, jan.matter@dataplumbers.ch, role:org-admin
