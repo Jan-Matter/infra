@@ -23,7 +23,19 @@ variable "infomaniak_argocd_oauth_client_id" {
 }
 
 variable "infomaniak_argocd_oauth_client_secret" {
-  description = "Infomaniak ArgoCD OAuth client ID"
+  description = "Infomaniak ArgoCD OAuth client secret"
+  type        = string
+  sensitive = true
+}
+
+variable "infomaniak_oauth2_proxy_client_id" {
+  description = "Infomaniak OAuth2 Proxy client ID"
+  type        = string
+  sensitive = true
+}
+
+variable "infomaniak_oauth2_proxy_client_secret" {
+  description = "Infomaniak OAuth2 Proxy client secret"
   type        = string
   sensitive = true
 }

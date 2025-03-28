@@ -23,4 +23,18 @@ resource "kubernetes_secret" "infomaniak-argocd-oauth-credentials" {
     "clientID"     = var.infomaniak_argocd_oauth_client_id
     "clientSecret" = var.infomaniak_argocd_oauth_client_secret
   }
+  depends_on = [ helm_release.argocd ]
+}
+
+# create secret infomaniak-argocd-oauth-credentials
+resource "kubernetes_secret" "argocd-github-private-ssh-key" {
+  metadata {
+    name      = "argocd-github-private-ssh-key"
+    namespace = "argocd"
+  }
+
+  data = {
+    "sshPrivateKey" = var.argocd_github_private_ssh_key
+  }
+  depends_on = [ helm_release.argocd ]
 }

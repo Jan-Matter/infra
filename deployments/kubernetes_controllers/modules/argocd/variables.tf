@@ -22,6 +22,12 @@ variable "infomaniak_argocd_oauth_client_secret" {
   sensitive = true
 }
 
+variable "argocd_github_private_ssh_key" {
+  description = "ArgoCD GitHub private SSH key"
+  type        = string
+  sensitive = true
+}
+
 variable "k8s_host" {
     description = "Kubernetes"
     type        = string 

@@ -234,6 +234,7 @@ module "kube-hetzner" {
       labels      = {
         "node.kubernetes.io/role": "peak-workloads"
       }
+      taints      = [],
       kubelet_args = ["kube-reserved=cpu=250m,memory=1500Mi,ephemeral-storage=1Gi", "system-reserved=cpu=250m,memory=300Mi"]
     }
    ]
