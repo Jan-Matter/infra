@@ -154,15 +154,15 @@ module "kube-hetzner" {
       # Enable automatic backups via Hetzner (default: false)
       # backups = true
     },
-    #{
-    #  name        = "storage-node",
-    #  server_type = "cx32",
-    #  location    = "nbg1",
-    #  labels      = [
-    #    "node.kubernetes.io/server-usage=storage"
-    #  ],
-    #  taints      = [],
-    #  count       = 3
+    {
+      name        = "storage-node",
+      server_type = "cx32",
+      location    = "nbg1",
+      labels      = [
+        "node.kubernetes.io/server-usage=storage"
+      ],
+      taints      = [],
+      count       = 2
 
       # In the case of using Longhorn, you can use Hetzner volumes instead of using the node's own storage by specifying a value from 10 to 10240 (in GB)
       # It will create one volume per node in the nodepool, and configure Longhorn to use them.
@@ -172,7 +172,7 @@ module "kube-hetzner" {
 
       # Enable automatic backups via Hetzner (default: false)
       # backups = true
-    #}
+    }
   ]
   # Add custom control plane configuration options here.
   # E.g to enable monitoring for etcd, proxy etc:
@@ -225,20 +225,20 @@ module "kube-hetzner" {
   # ⚠️ Setting labels and taints will only work on cluster-autoscaler images versions released after > 20 October 2023. Or images built from master after that date.
   #
   # * Example below:
-  # autoscaler_nodepools = [
-  #  {
-  #    name        = "autoscaled-small"
-  #   server_type = "cx32"
-  #    location    = "nbg1"
-  #    min_nodes   = 0
-  #    max_nodes   = 10
-  #    labels      = {
-  #      "node.kubernetes.io/role": "peak-workloads"
-  #    }
-  #    taints      = [],
-  #    kubelet_args = ["kube-reserved=cpu=250m,memory=1500Mi,ephemeral-storage=1Gi", "system-reserved=cpu=250m,memory=300Mi"]
-  #  }
-  # ]
+   autoscaler_nodepools = [
+    {
+      name        = "autoscaled-small"
+     server_type = "cx32"
+      location    = "nbg1"
+      min_nodes   = 1
+      max_nodes   = 10
+      labels      = {
+        "node.kubernetes.io/role": "peak-workloads"
+      }
+      taints      = [],
+      kubelet_args = ["kube-reserved=cpu=250m,memory=1500Mi,ephemeral-storage=1Gi", "system-reserved=cpu=250m,memory=300Mi"]
+    }
+   ]
 
   # ⚠️ Deprecated, will be removed after a new Cluster Autoscaler version has been released which support the new way of setting labels and taints. See above.
   # Add extra labels on nodes started by the Cluster Autoscaler
