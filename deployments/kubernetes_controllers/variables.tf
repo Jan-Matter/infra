@@ -28,17 +28,24 @@ variable "infomaniak_argocd_oauth_client_secret" {
   sensitive = true
 }
 
-variable "infomaniak_oauth2_proxy_client_id" {
-  description = "Infomaniak OAuth2 Proxy client ID"
-  type        = string
-  sensitive = true
-}
 
-variable "infomaniak_oauth2_proxy_client_secret" {
-  description = "Infomaniak OAuth2 Proxy client secret"
+variable "argocd_github_private_ssh_key" {
+  description = "ArgoCD GitHub private SSH key"
   type        = string
   sensitive = true
+
 }
+#variable "infomaniak_oauth2_proxy_client_id" {
+#  description = "Infomaniak OAuth2 Proxy client ID"
+#  type        = string
+#  sensitive = true
+#}
+
+#variable "infomaniak_oauth2_proxy_client_secret" {
+#  description = "Infomaniak OAuth2 Proxy client secret"
+#  type        = string
+#  sensitive = true
+#}
 
 variable "k8s_host" {
     description = "Kubernetes Host"
