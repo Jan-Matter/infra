@@ -26,7 +26,7 @@ configs:
   rbac:
     create: true
     annotations: {}
-    policy.default: deny
+    policy.default: ''
     policy.csv: |
       p, role:org-admin, applications, *, */*, allow
       p, role:org-admin, clusters, get, *, allow
