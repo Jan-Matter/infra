@@ -24,6 +24,9 @@ server:
       path: / 
 configs:
   rbac:
+    create: true
+    annotations: {}
+    policy.default: role:readonly
     policy.csv: |
       p, role:org-admin, applications, *, */*, allow
       p, role:org-admin, clusters, get, *, allow
@@ -32,8 +35,7 @@ configs:
       p, role:org-admin, logs, get, *, allow
       p, role:org-admin, exec, create, */*, allow
       g, jan.matter@dataplumbers.ch, role:org-admin
-    policy.default: role:readonly
-    scopes: "[openid]"
+    scopes: "[email]"
     policy.matchMode: "glob"
   cm:
     admin.enabled: false
