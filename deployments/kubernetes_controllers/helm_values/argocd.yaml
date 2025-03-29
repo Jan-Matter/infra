@@ -49,8 +49,9 @@ configs:
             clientSecret: "$INFOMANIAK_CLIENT_SECRET"
             redirectURI: https://argocd.dataplumbers.ch/api/dex/callback
             scopes:
+              - openid
               - email
-            userNameKey: mail
+            userNameKey: sub
   ssh:
     create: true
     annotations: {}
