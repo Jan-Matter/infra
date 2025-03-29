@@ -50,7 +50,7 @@ configs:
             redirectURI: https://argocd.dataplumbers.ch/api/dex/callback
             scopes:
               - email
-            userNameKey: email
+            userNameKey: mail
   ssh:
     create: true
     annotations: {}
