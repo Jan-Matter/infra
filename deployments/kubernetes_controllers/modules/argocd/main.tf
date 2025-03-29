@@ -38,9 +38,10 @@ resource "kubernetes_secret" "argocd-airflow-github-private-ssh-key" {
     }
   }
   data = {
+    "project" = "default"
     "type"          = "git"
     "url"           = "git@github.com:Jan-Matter/airflow.git"
-    "insecure"   = "true"
+    "insecure"   = true
     "sshPrivateKey" = var.argocd_github_private_ssh_key
   }
 }
