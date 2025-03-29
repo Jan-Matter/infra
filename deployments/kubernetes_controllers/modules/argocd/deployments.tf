@@ -10,9 +10,9 @@ resource "kubernetes_manifest" "airflow-prod" {
       "project" = "default"
       "sources" = [
         {
-          "chart": "apache-airflow/airflow",
+          "chart": "airflow",
           "repoURL": "https://airflow.apache.org",
-          "targetRevision": "8.9.0",
+          "targetRevision": "latest",
           "helm": {
             "releaseName": "airflow-prod",
             "valueFiles" = [
