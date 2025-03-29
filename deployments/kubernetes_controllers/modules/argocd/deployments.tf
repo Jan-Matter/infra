@@ -10,8 +10,8 @@ resource "kubernetes_manifest" "airflow-prod" {
       "project" = "default"
       "sources" = [
         {
-          "chart": "airflow-stable/airflow",
-          "repoURL": "https://airflow-helm.github.io/charts",
+          "chart": "airflow",
+          "repoURL": "https://artifacthub.io/packages/helm/airflow-helm",
           "targetRevision": "8.9.0",
           "helm": {
             "releaseName": "airflow-prod",
