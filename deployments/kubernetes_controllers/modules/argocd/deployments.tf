@@ -10,9 +10,9 @@ resource "kubernetes_manifest" "airflow-prod" {
       "project" = "default"
       "sources" = [
         {
-          "chart": "airflow",
+          "chart": "apache-airflow/airflow",
           "repoURL": "https://airflow.apache.org",
-          "targetRevision": "latest",
+          "targetRevision": "1.15.0",
           "helm": {
             "releaseName": "airflow-prod",
             "valueFiles" = [
@@ -34,7 +34,10 @@ resource "kubernetes_manifest" "airflow-prod" {
         "automated" = {
           "prune"    = true
           "selfHeal" = true
-        }
+        },
+        "syncOptions" = [
+          "CreateNamespace=true"
+        ]
       }
     }
   }
