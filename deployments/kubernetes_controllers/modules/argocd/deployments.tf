@@ -5,9 +5,6 @@ resource "kubernetes_manifest" "airflow-prod" {
     "metadata" = {
       "name"      = "airflow"
       "namespace" = "argocd"
-      "finalizers" = [
-        "resources-finalizer.argocd.argoproj.io"
-      ]
     }
     "spec" = {
       "project" = "default"
@@ -54,9 +51,6 @@ resource "kubernetes_manifest" "spark-prod" {
     "metadata" = {
       "name"      = "spark"
       "namespace" = "argocd"
-      "finalizers" = [
-        "resources-finalizer.argocd.argoproj.io"
-      ]
     }
     "spec" = {
       "project" = "default"
@@ -64,7 +58,7 @@ resource "kubernetes_manifest" "spark-prod" {
         {
           "chart": "spark-operator",
           "repoURL": "https://kubeflow.github.io/spark-operator",
-          "targetRevision": "2.0.1",
+          "targetRevision": "2.1.1",
           "helm": {
             "releaseName": "spark-prod",
             "valueFiles" = [
