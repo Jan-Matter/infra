@@ -45,3 +45,22 @@ resource "kubernetes_secret" "argocd-airflow-github-private-ssh-key" {
     "sshPrivateKey" = var.argocd_github_private_ssh_key
   }
 }
+
+
+# create secret infomaniak-argocd-oauth-credentials
+resource "kubernetes_secret" "argocd-kubernetes-deplyoments-github-private-ssh-key" {
+  metadata {
+    name      = "argocd-kubernetes-deployments-github-private-ssh-key"
+    namespace = "argocd"
+    labels = {
+      "argocd.argoproj.io/secret-type" = "repository"
+    }
+  }
+  data = {
+    "project" = "default"
+    "type"          = "git"
+    "url"           = "git@github.com:Jan-Matter/kubernetes-deployments.git"
+    "insecure"   = false
+    "sshPrivateKey" = var.argocd_github_private_ssh_key
+  }
+}
