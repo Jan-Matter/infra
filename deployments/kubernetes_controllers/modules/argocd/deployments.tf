@@ -53,7 +53,7 @@ resource "kubernetes_manifest" "spark-prod" {
     "kind"       = "Application"
     "metadata" = {
       "name"      = "spark"
-      "namespace" = "spark"
+      "namespace" = "argocd"
       "finalizers" = [
         "resources-finalizer.argocd.argoproj.io"
       ]
