@@ -64,7 +64,7 @@ resource "kubernetes_manifest" "spark-prod" {
         {
           "chart": "spark-operator",
           "repoURL": "https://kubeflow.github.io/spark-operator",
-          "targetRevision": "2.1.1",
+          "targetRevision": "2.0.1",
           "helm": {
             "releaseName": "spark-prod",
             "valueFiles" = [
