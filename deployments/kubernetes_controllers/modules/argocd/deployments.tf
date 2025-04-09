@@ -103,7 +103,7 @@ resource "kubernetes_manifest" "jupyterhub" {
       "sources" = [
         {
           "chart": "jupyterhub",
-          "repoURL": "https://jupyterhub.github.io/helm-chart",
+          "repoURL": "https://hub.jupyter.org/helm-chart",
           "targetRevision": "2.1.1",
           "helm": {
             "releaseName": "jupyterhub",
