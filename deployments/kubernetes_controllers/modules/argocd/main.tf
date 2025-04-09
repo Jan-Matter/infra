@@ -1,8 +1,8 @@
-resource "kubernetes_namespace" "argocd" {
-  metadata {
-    name = "argocd"
-  }
-}
+# resource "kubernetes_namespace" "argocd" {
+#   metadata {
+#     name = "argocd"
+#   }
+# }
 
 resource "helm_release" "argocd" {
   name       = "argocd"
@@ -13,7 +13,7 @@ resource "helm_release" "argocd" {
   version    = var.argocd_version
 
   values = var.values_path != "" ? [file(var.values_path)] : []
-  depends_on = [ kubernetes_namespace.argocd ]
+  # depends_on = [ kubernetes_namespace.argocd ]
 
 }
 
@@ -28,7 +28,7 @@ resource "kubernetes_secret" "infomaniak-argocd-oauth-credentials" {
     "clientID"     = var.infomaniak_argocd_oauth_client_id
     "clientSecret" = var.infomaniak_argocd_oauth_client_secret
   }
-  depends_on = [ kubernetes_namespace.argocd ]
+  # depends_on = [ kubernetes_namespace.argocd ]
 }
 
 # create secret infomaniak-argocd-oauth-credentials
@@ -47,7 +47,7 @@ resource "kubernetes_secret" "argocd-airflow-github-private-ssh-key" {
     "insecure"   = false
     "sshPrivateKey" = var.argocd_github_private_ssh_key
   }
-  depends_on = [ kubernetes_namespace.argocd ]
+  # depends_on = [ kubernetes_namespace.argocd ]
 }
 
 
@@ -67,5 +67,5 @@ resource "kubernetes_secret" "argocd-kubernetes-deplyoments-github-private-ssh-k
     "insecure"   = false
     "sshPrivateKey" = var.argocd_github_private_ssh_key
   }
-  depends_on = [ kubernetes_namespace.argocd ]
+  # depends_on = [ kubernetes_namespace.argocd ]
 }
