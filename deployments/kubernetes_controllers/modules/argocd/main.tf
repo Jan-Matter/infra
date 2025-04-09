@@ -42,6 +42,7 @@ resource "kubernetes_secret" "argocd-airflow-github-private-ssh-key" {
     "insecure"   = false
     "sshPrivateKey" = var.argocd_github_private_ssh_key
   }
+  depends_on = [ helm_release.argocd ]
 }
 
 
@@ -61,4 +62,5 @@ resource "kubernetes_secret" "argocd-kubernetes-deplyoments-github-private-ssh-k
     "insecure"   = false
     "sshPrivateKey" = var.argocd_github_private_ssh_key
   }
+  depends_on = [ helm_release.argocd ]
 }
