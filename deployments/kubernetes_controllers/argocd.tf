@@ -8,6 +8,8 @@ module "argocd" {
     values_path = "./helm_values/argocd.yaml"
     infomaniak_argocd_oauth_client_id = var.infomaniak_argocd_oauth_client_id
     infomaniak_argocd_oauth_client_secret = var.infomaniak_argocd_oauth_client_secret
+    infomaniak_jupyterhub_oauth_client_id = var.infomaniak_jupyterhub_oauth_client_id
+    infomaniak_jupyterhub_oauth_client_secret = var.infomaniak_jupyterhub_oauth_client_secret
     argocd_github_private_ssh_key = var.argocd_github_private_ssh_key
     
     argocd_version = local.argocd_version
