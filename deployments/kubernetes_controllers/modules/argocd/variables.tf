@@ -22,18 +22,6 @@ variable "infomaniak_argocd_oauth_client_secret" {
   sensitive = true
 }
 
-variable "infomaniak_jupyterhub_oauth_client_id" {
-  description = "Infomaniak jupyterhub OAuth client ID"
-  type        = string
-  sensitive = true
-}
-
-variable "infomaniak_jupyterhub_oauth_client_secret" {
-  description = "Infomaniak jupyterhub OAuth client ID"
-  type        = string
-  sensitive = true
-}
-
 variable "argocd_github_private_ssh_key" {
   description = "ArgoCD GitHub private SSH key"
   type        = string

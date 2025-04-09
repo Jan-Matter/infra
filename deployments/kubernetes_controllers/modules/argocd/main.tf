@@ -26,23 +26,6 @@ resource "kubernetes_secret" "infomaniak-argocd-oauth-credentials" {
   depends_on = [ helm_release.argocd ]
 }
 
-
-# create secret infomaniak-argocd-oauth-credentials
-resource "kubernetes_secret" "infomaniak-jupyterhub-oauth-credentials" {
-  metadata {
-    name      = "infomaniak-argocd-oauth-credentials"
-    namespace = "argocd"
-  }
-
-  data = {
-    "clientID"     = var.infomaniak_jupyterhub_oauth_client_id
-    "clientSecret" = var.infomaniak_jupyterhub_oauth_client_secret
-  }
-  depends_on = [ helm_release.argocd ]
-}
-
-
-
 # create secret infomaniak-argocd-oauth-credentials
 resource "kubernetes_secret" "argocd-airflow-github-private-ssh-key" {
   metadata {
